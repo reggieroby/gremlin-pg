@@ -1,0 +1,42 @@
+{
+  "name": "@codealpha/gremlin-pg",
+  "version": "0.1.6",
+  "description": "POC A gremlin interface for Postgres DB",
+  "main": "dist/index.js",
+  "scripts": {
+    "pretest": "npm run build && babel-node test/seed.js",
+    "test": "babel-node ./node_modules/.bin/jasmine test/**/*.spec.js",
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "babel-node ./node_modules/.bin/webpack",
+    "prettier": "prettier --write \"**/*.js\"",
+    "prepublishit": "ca-cli util_bump_n_tag patch && npm i && npm run build",
+    "publishit": "npm publish --access public",
+    "postpack": "rm -rf codealpha-gremlin-pg-*.tgz"
+  },
+  "keywords": [
+    "gremlin",
+    "pg",
+    "graph"
+  ],
+  "dependencies": {
+    "knex": "^0.95.2",
+    "nanoid": "^3.1.22",
+    "pg": "^8.5.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@codealpha/util": "^0.1.4",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.1.1",
+    "jasmine": "^3.6.4",
+    "prettier": "^2.1.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
